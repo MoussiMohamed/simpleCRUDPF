@@ -26,11 +26,7 @@ import javax.servlet.http.HttpSession;
 @SessionScoped
 public class LoginController implements Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1934702737563276027L;
-	@Inject
+    @Inject
     private transient Logger logger;
     private String username;
     private String password;
@@ -87,8 +83,8 @@ public class LoginController implements Serializable {
         try {
             String navigateString = "";
             // Checks if username and password are valid if not throws a ServletException
-            System.out.println(this.username+" , "+this.password);
-            request.login(this.username, this.password);
+            request.login(username, password);
+            
             // gets the user principle and navigates to the appropriate page
             Principal principal = request.getUserPrincipal();
             if (request.isUserInRole("Administrator")) {

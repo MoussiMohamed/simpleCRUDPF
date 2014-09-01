@@ -1,5 +1,5 @@
 
-INSERT INTO `simplecrud_db`.`Address`
+INSERT INTO `simplecrud_db`.`ADDRESS`
 (`ID`, `CITY`, `COUNTRY`, `STREET`,`SUBURB`)
 VALUES
 ('1', 'city', 'country', 'street', 'suburb'),
@@ -16,14 +16,14 @@ VALUES
 ('12', 'city', 'country', 'street', 'suburb'),
 ('13', 'city', 'country', 'street', 'suburb');
 
-INSERT INTO `simplecrud_db`.`Role`
+INSERT INTO `simplecrud_db`.`ROLE`
 (`ID`, `ROLEDESC`, `ROLENAME`)
 VALUES
 ('1', 'Administrator', 'Administrators'),
 ('2', 'Manager', 'Managers'),
 ('3', 'User', 'Users');
 
-INSERT INTO `simplecrud_db`.`User`
+INSERT INTO `simplecrud_db`.`USER`
 (`ID`, `EMAIL`, `FIRSTNAME`, `LASTNAME`, `PASSWORD`, `USERNAME`, `ADDRESS_ID`)
 VALUES
 ('1', 'e-mail', 'name', 'surname', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'admin', '1'),
@@ -60,10 +60,10 @@ VALUES
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` 
 SQL SECURITY DEFINER VIEW `user_role_view` 
-AS select `simplecrud_db`.`User`.`USERNAME` 
-AS `username`,`simplecrud_db`.`User`.`PASSWORD` 
-AS `password`,`simplecrud_db`.`Role`.`ROLENAME` 
+AS select `simplecrud_db`.`USER`.`USERNAME` 
+AS `username`,`simplecrud_db`.`USER`.`PASSWORD` 
+AS `password`,`simplecrud_db`.`ROLE`.`ROLENAME` 
 AS `rolename` 
 from ((`user_roles` 
-join `User` on((`simplecrud_db`.`user_roles`.`User_userid` = `simplecrud_db`.`User`.`ID`))) 
-join `Role` on((`simplecrud_db`.`user_roles`.`Role_roleid` = `simplecrud_db`.`Role`.`ID`)))
+join `USER` on((`simplecrud_db`.`user_roles`.`User_userid` = `simplecrud_db`.`USER`.`ID`))) 
+join `ROLE` on((`simplecrud_db`.`user_roles`.`Role_roleid` = `simplecrud_db`.`ROLE`.`ID`)))
